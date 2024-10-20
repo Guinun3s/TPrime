@@ -3,9 +3,10 @@ package com.example.tprime.model;
 import java.time.LocalDate;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 @Table(name = "PAGAMENTO")
 public class Pagamento extends AbstractEntity<Long> {

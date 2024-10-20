@@ -1,9 +1,10 @@
 package com.example.tprime.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 @Table(name = "PRODUTO")
 public class Produto extends AbstractEntity<Long> {

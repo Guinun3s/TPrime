@@ -3,9 +3,10 @@ package com.example.tprime.model;
 import java.time.LocalDate;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 @Table(name = "COMPRA")
 public class Compra extends AbstractEntity<Long> {
@@ -18,7 +19,7 @@ public class Compra extends AbstractEntity<Long> {
     @Column(nullable = false)
     private String statusCompra;
 
-    @OneToOne(mappedBy = "cliente")
+    @OneToOne
     private Cliente cliente;
 
 }

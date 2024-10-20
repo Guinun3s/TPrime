@@ -4,9 +4,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 @Table(name = "CLIENTE")
 public class Cliente extends AbstractEntity<Long> {
@@ -38,7 +39,7 @@ public class Cliente extends AbstractEntity<Long> {
     @JoinColumn(name = "id_compra_fk")
     private Compra compra;
 
-    @OneToMany(mappedBy = "produto")
+    @OneToMany(mappedBy = "cliente")
     private List<Produto> produtos;
     
 }
