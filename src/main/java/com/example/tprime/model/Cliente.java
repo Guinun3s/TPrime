@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.*;
-import lombok.*;;
+import lombok.*;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
