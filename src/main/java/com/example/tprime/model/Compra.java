@@ -15,13 +15,10 @@ public class Compra extends AbstractEntity<Long> {
     private Long id;
     
     @Column(nullable = false)
-    private float valorTotal;
+    private float valor;
 
     @Column(nullable = false)
     private LocalDate dataCompra;
-
-    @Column(nullable = false)
-    private String statusCompra;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente_fk")

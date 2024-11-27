@@ -20,6 +20,9 @@ public class Pagamento extends AbstractEntity<Long> {
     @Column(nullable = false)
     private String formaPagamento;
 
+    @Column(nullable = false)
+    private float valor;
+
     @OneToOne(mappedBy = "pagamento")
     private Compra compra;
     

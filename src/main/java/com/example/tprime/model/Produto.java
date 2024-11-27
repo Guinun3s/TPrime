@@ -21,15 +21,6 @@ public class Produto extends AbstractEntity<Long> {
     @Column(nullable = false)
     private float valor;
 
-    @Column(nullable = false)
-    private String categoria;
-
-    @Column(nullable = false)
-    private int estoque;
-
-    @Column(nullable = false)
-    private String descricao;
-
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<Compra> compras = new ArrayList<>();
 

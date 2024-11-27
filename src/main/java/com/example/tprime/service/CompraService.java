@@ -12,12 +12,12 @@ public class CompraService {
     @Autowired
     private ICompraRepository repository;
 
-    public void salvar(Compra produto) {
-        repository.save(produto);
+    public void salvar(Compra compra) {
+        repository.save(compra);
     }
 
-    public void editar(Compra produto) {
-        repository.save(produto);
+    public void editar(Compra compra) {
+        repository.save(compra);
     }
 
     public void excluir(Long id) {
