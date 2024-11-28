@@ -3,14 +3,40 @@ package com.example.tprime.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.tprime.model.Cliente;
+import com.example.tprime.model.Compra;
 import com.example.tprime.model.Pagamento;
+import com.example.tprime.repository.IClienteRepository;
+import com.example.tprime.repository.ICompraRepository;
 import com.example.tprime.repository.IPagamentoRepository;
+
+import jakarta.transaction.Transactional;
+
 import java.util.*;
 
 @Service
 public class PagamentoService {
     @Autowired
+    private IClienteRepository clienteRepository;
+
+    @Autowired
+    private ICompraRepository compraRepository;
+
+    @Autowired
     private IPagamentoRepository repository;
+
+    //Método utilizado para o cliente realizar o pagamento da compra realizada ou pagar sua dívida 
+    @Transactional
+    public void pagarCompra(Long clienteId, Long compraId) {
+        Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        Compra compra = compraRepository.findById(compraId).orElseThrow(() -> new RuntimeException("Compra não encontrada"));
+
+        if (!compra.isSituacao()) { 
+            compra.setSituacao(true); 
+            compraRepository.save(compra); 
+            cliente.setDivida(cliente.getDivida() - compra.getValor()); 
+            clienteRepository.save(cliente); }
+    }
 
     public void salvar(Pagamento pagamento) {
         repository.save(pagamento);

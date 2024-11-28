@@ -38,7 +38,15 @@ public class Cliente extends AbstractEntity<Long> {
     @Column(nullable = false)
     private float divida;
 
+    //Relacionamento
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Compra> compras = new ArrayList<>();
+
+    //toString para exibir as informações do cliente
+    @Override
+    public String toString() {
+        return "\nCliente id= " + id + "\nnome= " + nome + "\ncpf= " + cpf + "\ndataNas= " + dataNas + "\nemail= " + email
+                + "\ntelefone= " + telefone + "\nendereco= " + endereco + "\ndivida= " + divida + "\n";
+    }
     
 }

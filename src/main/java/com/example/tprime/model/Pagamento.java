@@ -23,7 +23,14 @@ public class Pagamento extends AbstractEntity<Long> {
     @Column(nullable = false)
     private float valor;
 
-    @OneToOne(mappedBy = "pagamento")
+    //Relacionamento
+    @OneToOne
+    @JoinColumn(name = "id_pagamento_fk")
     private Compra compra;
     
+    //toString para exibir as informações do pagamento
+    @Override
+    public String toString() {
+        return "\nPagamento id= " + id + "\ndataPagamento= " + dataPagamento + "\nformaPagamento= " + formaPagamento + "\nvalor= " + valor + "\n";
+    }
 }

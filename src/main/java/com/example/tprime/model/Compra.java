@@ -20,6 +20,11 @@ public class Compra extends AbstractEntity<Long> {
     @Column(nullable = false)
     private LocalDate dataCompra;
 
+    //Atributo para verificar se a compra foi paga ou não
+    @Column(nullable = false)
+    private boolean situacao;
+
+    //Relacionamentos
     @ManyToOne
     @JoinColumn(name = "id_cliente_fk")
     private Cliente cliente;
@@ -28,7 +33,13 @@ public class Compra extends AbstractEntity<Long> {
     @JoinColumn(name = "id_produto_fk")
     private Produto produto;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_compra_fk")
+    @OneToOne(mappedBy = "compra", cascade = CascadeType.ALL)
     private Pagamento pagamento;
+
+    //toString para exibir as informações da compra
+    @Override
+    public String toString() {
+        return "\nCompra id= " + id + "\nvalor= " + valor + "\ndataCompra= " + dataCompra + "\nsituação= " + situacao + "\n";
+    }
+
 }

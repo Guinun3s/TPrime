@@ -5,31 +5,36 @@ import org.springframework.stereotype.Service;
 
 import com.example.tprime.model.Compra;
 import com.example.tprime.repository.ICompraRepository;
+
+import jakarta.transaction.Transactional;
+
 import java.util.*;
 
 @Service
 public class CompraService {
-    @Autowired
-    private ICompraRepository repository;
 
+    @Autowired
+    private ICompraRepository compraRepository;
+
+    @Transactional
     public void salvar(Compra compra) {
-        repository.save(compra);
+        compraRepository.save(compra);
     }
 
     public void editar(Compra compra) {
-        repository.save(compra);
+        compraRepository.save(compra);
     }
 
     public void excluir(Long id) {
-        repository.deleteById(id);
+        compraRepository.deleteById(id);
     }
 
     public Optional<Compra> buscarPorId(Long id) {
-        return repository.findById(id);
+        return compraRepository.findById(id);
     }
 
     public List<Compra> buscarTodos() {
-        return repository.findAll();
+        return compraRepository.findAll();
     }
 
 }

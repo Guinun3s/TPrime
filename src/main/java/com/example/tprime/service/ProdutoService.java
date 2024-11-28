@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.tprime.model.Produto;
 import com.example.tprime.repository.IProdutoRepository;
+
+import jakarta.transaction.Transactional;
+
 import java.util.*;
 
 @Service
@@ -12,6 +15,7 @@ public class ProdutoService {
     @Autowired
     private IProdutoRepository repository;
 
+    @Transactional
     public void salvar(Produto produto) {
         repository.save(produto);
     }

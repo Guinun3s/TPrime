@@ -10,6 +10,8 @@ import com.example.tprime.model.Compra;
 import com.example.tprime.repository.IClienteRepository;
 import com.example.tprime.repository.ICompraRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ClienteService {
     @Autowired
@@ -18,11 +20,17 @@ public class ClienteService {
     @Autowired
     private ICompraRepository compraRepository;
 
+    @Transactional
+    //Método utilizado para o adicionar a dívida do cliente caso ele não pague a sua compra
     public void adicionarDivida(Long clienteId, Long compraId) {
         Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
         Compra compra = compraRepository.findById(compraId).orElseThrow(() -> new RuntimeException("Compra não encontrada"));
-        cliente.setDivida(cliente.getDivida() + compra.getValor());
-        clienteRepository.save(cliente);
+
+        if (!compra.isSituacao()) {
+            // Adicionar o valor da compra à dívida do cliente
+            cliente.setDivida(cliente.getDivida() + compra.getValor());
+            clienteRepository.save(cliente);
+        }
     }
 
     public void salvar(Cliente cliente){
