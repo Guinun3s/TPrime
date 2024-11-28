@@ -10,13 +10,14 @@ import jakarta.transaction.Transactional;
 
 import java.util.*;
 
+@Transactional
 @Service
 public class CompraService {
 
     @Autowired
     private ICompraRepository compraRepository;
 
-    @Transactional
+   
     public void salvar(Compra compra) {
         compraRepository.save(compra);
     }

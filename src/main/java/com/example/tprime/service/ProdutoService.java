@@ -10,12 +10,12 @@ import jakarta.transaction.Transactional;
 
 import java.util.*;
 
+@Transactional
 @Service
 public class ProdutoService {
     @Autowired
     private IProdutoRepository repository;
 
-    @Transactional
     public void salvar(Produto produto) {
         repository.save(produto);
     }

@@ -14,6 +14,7 @@ import jakarta.transaction.Transactional;
 
 import java.util.*;
 
+@Transactional
 @Service
 public class PagamentoService {
     @Autowired
@@ -26,7 +27,6 @@ public class PagamentoService {
     private IPagamentoRepository repository;
 
     //Método utilizado para o cliente realizar o pagamento da compra realizada ou pagar sua dívida 
-    @Transactional
     public void pagarCompra(Long clienteId, Long compraId) {
         Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
         Compra compra = compraRepository.findById(compraId).orElseThrow(() -> new RuntimeException("Compra não encontrada"));
