@@ -32,6 +32,7 @@ public class TprimeApplication {
 			Cliente c1 = new Cliente();
 			Compra co1 = new Compra();
 			Produto p1 = new Produto();
+			//Pagamento pa1 = new Pagamento();
 			
 			c1.setNome("João");
 			c1.setCpf("1111111111");
@@ -42,7 +43,7 @@ public class TprimeApplication {
 			c1.setTelefone("7799999999");
 			cliService.salvar(c1);
 
-			p1.setNome("Perfume");
+			p1.setNome("Perfume Eudora");
 			p1.setValor(50);
 			proService.salvar(p1);
 
@@ -56,12 +57,12 @@ public class TprimeApplication {
 			//Adicionando a divida do cliente no banco de dados
 			cliService.adicionarDivida((long) 1, (long) 1);
 
-			/*pa1.setCompra(co1);
-			pa1.setValor(co1.getValor());
-			pa1.setFormaPagamento("Pix");
-			pa1.setDataPagamento(co1.getDataCompra());
-			pagService.pagarCompra((long) 1, (long) 1);
-			pagService.salvar(pa1);*/
+			// pa1.setCompra(co1);
+			// pa1.setValor(co1.getValor());
+			// pa1.setFormaPagamento("Pix");
+			// pa1.setDataPagamento(co1.getDataCompra());
+			// pagService.pagarCompra((long) 1, (long) 1);
+			// pagService.salvar(pa1);
 
 			//O segundo exemplo representa uma compra paga
 			Cliente c2 = new Cliente();
@@ -78,7 +79,7 @@ public class TprimeApplication {
 			c2.setTelefone("77988888888");
 			cliService.salvar(c2);
 
-			p2.setNome("Perfume");
+			p2.setNome("Perfume Malbec");
 			p2.setValor(100);
 			proService.salvar(p2);
 

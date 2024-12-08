@@ -35,7 +35,8 @@ public class PagamentoService {
             compra.setSituacao(true); 
             compraRepository.save(compra); 
             cliente.setDivida(cliente.getDivida() - compra.getValor()); 
-            clienteRepository.save(cliente); }
+            clienteRepository.save(cliente); 
+        }
     }
 
     public void salvar(Pagamento pagamento) {
